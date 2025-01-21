@@ -30,6 +30,13 @@ export default function SensorExplorer() {
     ? Object.keys(groupsSensors?.groupsBySensor)
     : [];
 
+    if(isError){
+        return <div>Error: {error?.message ?? "Something went wrong"}</div>
+    }
+
+
+  const sensorGroups = groupsSensors?.groupsBySensor[selectedSensor ?? ""];
+
   return (
     <>
       {/* // TODO: continue from here */}
@@ -40,9 +47,7 @@ export default function SensorExplorer() {
         </div>
       )}
 
-      {isError && <div>Error: {error?.message ?? "Something went wrong"}</div>}
 
-      {isSuccess && (
         <div style={{ maxWidth: "550px", margin: "0 auto" }}>
           <Summary
             customer={groupsSensors?.customer}
@@ -70,13 +75,12 @@ export default function SensorExplorer() {
             <span>is composed by:</span>
           </div>
         </div>
-      )}
 
       {/* // TODO: Uncomment once part 1 is complete */}
-      {isSuccess && selectedSensor && (
+      {selectedSensor && (
         <SensorGroups
           selectedSensor={selectedSensor}
-          groupsSensors={groupsSensors!}
+          groups={sensorGroups ?? []}
         />
       )}
     </>
