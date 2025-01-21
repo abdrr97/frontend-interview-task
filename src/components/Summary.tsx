@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const summaryStyles: React.CSSProperties = {
   textAlign: "center",
@@ -20,10 +20,10 @@ export default function Summary({
   style,
 }: SummaryProps) {
   const [sensorsNumber, setSensorsNumber] = useState<number | undefined>(
-    undefined
+    undefined,
   );
   const [groupsNumber, setGroupsNumber] = useState<number | undefined>(
-    undefined
+    undefined,
   );
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export default function Summary({
       ? new Set(
           Object.values(groupsBySensor).reduce(
             (res, groups) => [...res, ...groups],
-            []
-          )
+            [],
+          ),
         ).size
       : undefined;
 

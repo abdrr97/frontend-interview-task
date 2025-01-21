@@ -22,7 +22,7 @@ const labelStyles: React.CSSProperties = {
 
 export default function ComponentsPreview() {
   const [selectedOption, setSelectedOption] = useState<string | undefined>(
-    undefined
+    undefined,
   );
 
   const groupsBySensor = {
